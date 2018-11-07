@@ -369,11 +369,11 @@ namespace UnityGameFramework.Runtime
         /// </summary>
         /// <param name="soundAssetName">声音资源名称。</param>
         /// <param name="soundGroupName">声音组名称。</param>
-        /// <param name="bindingEntity">声音绑定的实体。</param>
+        /// <param name="bindingTransform">声音绑定的Transform。</param>
         /// <returns>声音的序列编号。</returns>
-        public int PlaySound(string soundAssetName, string soundGroupName, Entity bindingEntity)
+        public int PlaySound(string soundAssetName, string soundGroupName, VarTransform bindingTransform)
         {
-            return PlaySound(soundAssetName, soundGroupName, DefaultPriority, null, bindingEntity, null);
+            return PlaySound(soundAssetName, soundGroupName, DefaultPriority, null, bindingTransform, null);
         }
 
         /// <summary>
@@ -434,11 +434,11 @@ namespace UnityGameFramework.Runtime
         /// <param name="soundGroupName">声音组名称。</param>
         /// <param name="priority">加载声音资源的优先级。</param>
         /// <param name="playSoundParams">播放声音参数。</param>
-        /// <param name="bindingEntity">声音绑定的实体。</param>
+        /// <param name="bindingTransform">声音绑定的物体。</param>
         /// <returns>声音的序列编号。</returns>
-        public int PlaySound(string soundAssetName, string soundGroupName, int priority, PlaySoundParams playSoundParams, Entity bindingEntity)
+        public int PlaySound(string soundAssetName, string soundGroupName, int priority, PlaySoundParams playSoundParams, VarTransform bindingTransform)
         {
-            return PlaySound(soundAssetName, soundGroupName, priority, playSoundParams, bindingEntity, null);
+            return PlaySound(soundAssetName, soundGroupName, priority, playSoundParams, bindingTransform, null);
         }
 
         /// <summary>
@@ -448,12 +448,12 @@ namespace UnityGameFramework.Runtime
         /// <param name="soundGroupName">声音组名称。</param>
         /// <param name="priority">加载声音资源的优先级。</param>
         /// <param name="playSoundParams">播放声音参数。</param>
-        /// <param name="bindingEntity">声音绑定的实体。</param>
+        /// <param name="bindingTransform">声音绑定的物体。</param>
         /// <param name="userData">用户自定义数据。</param>
         /// <returns>声音的序列编号。</returns>
-        public int PlaySound(string soundAssetName, string soundGroupName, int priority, PlaySoundParams playSoundParams, Entity bindingEntity, object userData)
+        public int PlaySound(string soundAssetName, string soundGroupName, int priority, PlaySoundParams playSoundParams, VarTransform bindingTransform, object userData)
         {
-            return m_SoundManager.PlaySound(soundAssetName, soundGroupName, priority, playSoundParams, new PlaySoundInfo(bindingEntity, Vector3.zero, userData));
+            return m_SoundManager.PlaySound(soundAssetName, soundGroupName, priority, playSoundParams, new PlaySoundInfo(bindingTransform, Vector3.zero, userData));
         }
 
         /// <summary>
@@ -614,9 +614,9 @@ namespace UnityGameFramework.Runtime
             if (playSoundInfo != null)
             {
                 SoundAgentHelperBase soundAgentHelper = (SoundAgentHelperBase)e.SoundAgent.Helper;
-                if (playSoundInfo.BindingEntity != null)
+                if (playSoundInfo.BindingTranform != null)
                 {
-                    soundAgentHelper.SetBindingEntity(playSoundInfo.BindingEntity);
+                    soundAgentHelper.SetBindingEntity(playSoundInfo.BindingTranform);
                 }
                 else
                 {

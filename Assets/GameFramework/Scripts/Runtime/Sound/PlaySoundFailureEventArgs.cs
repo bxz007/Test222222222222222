@@ -68,9 +68,9 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 获取声音绑定的实体。
+        /// 获取声音绑定的Transform。
         /// </summary>
-        public Entity BindingEntity
+        public VarTransform BindingTransform
         {
             get;
             private set;
@@ -112,7 +112,7 @@ namespace UnityGameFramework.Runtime
             SoundAssetName = default(string);
             SoundGroupName = default(string);
             PlaySoundParams = default(PlaySoundParams);
-            BindingEntity = default(Entity);
+            BindingTransform = default(VarTransform);
             ErrorCode = default(int);
             ErrorMessage = default(string);
             UserData = default(object);
@@ -130,7 +130,7 @@ namespace UnityGameFramework.Runtime
             SoundAssetName = e.SoundAssetName;
             SoundGroupName = e.SoundGroupName;
             PlaySoundParams = e.PlaySoundParams;
-            BindingEntity = playSoundInfo.BindingEntity;
+            BindingTransform = playSoundInfo.BindingTranform;
             ErrorCode = e.ErrorCode;
             ErrorMessage = e.ErrorMessage;
             UserData = playSoundInfo.UserData;

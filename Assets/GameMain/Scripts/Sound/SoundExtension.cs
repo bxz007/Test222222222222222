@@ -46,7 +46,7 @@ namespace GameMain
             s_MusicSerialId = null;
         }
 
-        public static int? PlaySound(this SoundComponent soundComponent, int soundId, Entity bindingEntity = null, object userData = null)
+        public static int? PlaySound(this SoundComponent soundComponent, int soundId, VarTransform bindingTransform = null, object userData = null)
         {
             IDataTable<DRSound> dtSound = GameEntry.DataTable.GetDataTable<DRSound>();
             DRSound drSound = dtSound.GetDataRow(soundId);
@@ -64,7 +64,7 @@ namespace GameMain
                 SpatialBlend = drSound.SpatialBlend,
             };
 
-            return soundComponent.PlaySound(AssetUtility.GetSoundAsset(drSound.AssetName), "Sound", Constant.AssetPriority.SoundAsset, playSoundParams, bindingEntity != null ? bindingEntity.Entity : null, userData);
+            return soundComponent.PlaySound(AssetUtility.GetSoundAsset(drSound.AssetName), "Sound", Constant.AssetPriority.SoundAsset, playSoundParams, bindingTransform, userData);
         }
 
         public static int? PlayUISound(this SoundComponent soundComponent, int uiSoundId, object userData = null)

@@ -11,22 +11,22 @@ namespace UnityGameFramework.Runtime
 {
     internal sealed class PlaySoundInfo
     {
-        private readonly Entity m_BindingEntity;
+        private readonly VarTransform m_BindingTransform;
         private readonly Vector3 m_WorldPosition;
         private readonly object m_UserData;
 
-        public PlaySoundInfo(Entity bindingEntity, Vector3 worldPosition, object userData)
+        public PlaySoundInfo(VarTransform bindingTransform, Vector3 worldPosition, object userData)
         {
-            m_BindingEntity = bindingEntity;
+            m_BindingTransform = bindingTransform;
             m_WorldPosition = worldPosition;
             m_UserData = userData;
         }
 
-        public Entity BindingEntity
+        public VarTransform BindingTranform
         {
             get
             {
-                return m_BindingEntity;
+                return m_BindingTransform;
             }
         }
 

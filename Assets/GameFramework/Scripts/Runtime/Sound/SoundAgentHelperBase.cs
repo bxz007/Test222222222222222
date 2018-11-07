@@ -166,10 +166,10 @@ namespace UnityGameFramework.Runtime
         public abstract bool SetSoundAsset(object soundAsset);
 
         /// <summary>
-        /// 设置声音绑定的实体。
+        /// 设置声音绑定的Transform。
         /// </summary>
-        /// <param name="bindingEntity">声音绑定的实体。</param>
-        public abstract void SetBindingEntity(Entity bindingEntity);
+        /// <param name="bindingTransform">声音绑定的Transform。</param>
+        public abstract void SetBindingEntity(VarTransform bindingTransform);
 
         /// <summary>
         /// 设置声音所在的世界坐标。

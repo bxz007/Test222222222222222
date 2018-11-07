@@ -20,7 +20,7 @@ namespace UnityGameFramework.Runtime
     {
         private Transform m_CachedTransform = null;
         private AudioSource m_AudioSource = null;
-        private EntityLogic m_BindingEntityLogic = null;
+        private VarTransform m_BindingTransform = null;
         private float m_VolumeWhenPause = 0f;
         private EventHandler<ResetSoundAgentEventArgs> m_ResetSoundAgentEventHandler = null;
 
@@ -296,7 +296,7 @@ namespace UnityGameFramework.Runtime
         {
             m_CachedTransform.localPosition = Vector3.zero;
             m_AudioSource.clip = null;
-            m_BindingEntityLogic = null;
+            m_BindingTransform = null;
             m_VolumeWhenPause = 0f;
         }
 
@@ -318,13 +318,13 @@ namespace UnityGameFramework.Runtime
         }
 
         /// <summary>
-        /// 设置声音绑定的实体。
+        /// 设置声音绑定的Transform。
         /// </summary>
-        /// <param name="bindingEntity">声音绑定的实体。</param>
-        public override void SetBindingEntity(Entity bindingEntity)
+        /// <param name="bindingTransform">声音绑定的Transform。</param>
+        public override void SetBindingEntity(VarTransform bindingTransform)
         {
-            m_BindingEntityLogic = bindingEntity.Logic;
-            if (m_BindingEntityLogic != null)
+            m_BindingTransform = bindingTransform;
+            if (m_BindingTransform != null)
             {
                 UpdateAgentPosition();
                 return;
@@ -361,7 +361,7 @@ namespace UnityGameFramework.Runtime
                 return;
             }
 
-            if (m_BindingEntityLogic != null)
+            if (m_BindingTransform != null)
             {
                 UpdateAgentPosition();
             }
@@ -369,9 +369,9 @@ namespace UnityGameFramework.Runtime
 
         private void UpdateAgentPosition()
         {
-            if (m_BindingEntityLogic.IsAvailable)
+            if (m_BindingTransform != null)
             {
-                m_CachedTransform.position = m_BindingEntityLogic.CachedTransform.position;
+                m_CachedTransform.position = m_BindingTransform.Value.position;
                 return;
             }
 
