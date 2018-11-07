@@ -4,13 +4,12 @@ using UnityEngine;
 using GameMain;
 public class User : Entity {
 
-    public static List<User> userList;
+    public static List<User> userList = new List<User>();
 
-    protected internal override void OnInit(object userData)
+    private void Awake()
     {
-        base.OnInit(userData);
         userList.Add(this);
-    }
+    }   
 
     private void OnDestroy()
     {
